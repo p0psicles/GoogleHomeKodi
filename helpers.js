@@ -120,6 +120,13 @@ exports.kodiPlayMovie = (request, response) => { // eslint-disable-line no-unuse
     response.sendStatus(200);
 };
 
+exports.kodiShutdown = (request, response) => {
+    let Kodi = request.kodi;
+
+    Kodi.System.Shutdown();  // eslint-disable-line new-cap
+    response.sendStatus(200);
+};
+
 const kodiFindTvShow = (request, res, param) => {
     return new Promise((resolve, reject) => {
         let Kodi = request.kodi;
