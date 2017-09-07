@@ -129,8 +129,9 @@ app.get('/playepisode', function(request, response) {
 // Request format:  http://[THIS_SERVER_IP_ADDRESS]/shutdown
 app.get('/shutdown', function(request, response) {
     validateRequest(request, response).then(() => {
-        Helper.kodiShutdown(request, response);
+        request.kodi.System.Shutdown();  // eslint-disable-line new-cap
     });
+    response.sendStatus(200);
 });
 
 // Parse request to watch a PVR channel by name
